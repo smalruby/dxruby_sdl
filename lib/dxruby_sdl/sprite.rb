@@ -118,7 +118,7 @@ module DXRubySDL
       if !@visible || vanished?
         return
       end
-      [:target, :blend, :shader].each do |method|
+      [:blend, :shader].each do |method|
         if send(method)
           raise NotImplementedError, "Sprite#draw with #{method}"
         end
@@ -139,7 +139,11 @@ module DXRubySDL
       if center_y
         options[:center_y] = center_y
       end
-      Window.draw_ex(x, y, image, options)
+      if target
+        target.draw_ex(x, y, image, options)
+      else
+        Window.draw_ex(x, y, image, options)
+      end
     end
 
     def ===(other)
