@@ -61,11 +61,7 @@ module DXRubySDL
 
     def compare(x, y, color)
       pixel = lock { @_surface.get_pixel(x, y) }
-      color == if color.length == 4
-                 @_surface.format.get_rgba(pixel)
-               else
-                 @_surface.format.get_rgb(pixel)
-               end
+      color == (color.length == 4 ? @_surface.format.get_rgba(pixel) : @_surface.format.get_rgb(pixel))
     end
 
     def slice(x, y, width, height)
