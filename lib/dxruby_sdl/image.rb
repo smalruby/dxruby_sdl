@@ -39,12 +39,6 @@ module DXRubySDL
       @_surface =
         SDL::Surface.new(SDL::SWSURFACE, width, height, Window.send(:screen))
       @_surface.fill_rect(0, 0, width, height, @color)
-
-      # TODO: a値が0の時にしか対応していない。
-      # 1から254の値に対応すること
-      if color[3] == 0
-        set_color_key(@color[0..2])
-      end
     end
 
     def width
