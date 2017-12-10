@@ -81,6 +81,28 @@ describe DXRubySDL::Sound, '音を表すクラス' do
     end
   end
 
+  describe '#loop_count=' do
+    context 'WAVE file', wave: true do
+      it 'SDL::Waveのループ回数を変更する' do
+        expect(sound.instance_variable_get('@sound')
+                    .instance_variable_get('@loop_count')).to eq(0)
+        sound.loop_count = 1
+        expect(sound.instance_variable_get('@sound')
+                    .instance_variable_get('@loop_count')).to eq(1)
+      end
+    end
+
+    context 'MIDI file', midi: true do
+      it 'SDL::Musicのループ回数を変更する' do
+        expect(sound.instance_variable_get('@sound')
+                    .instance_variable_get('@loop_count')).to eq(-1)
+        sound.loop_count = 1
+        expect(sound.instance_variable_get('@sound')
+                    .instance_variable_get('@loop_count')).to eq(1)
+      end
+    end
+  end
+
   describe '#stop' do
     it '再生していないサウンドを停止でエラーが発生しない' do
       sound = DXRubySDL::Sound.new(fixture_path('sound.wav'))
