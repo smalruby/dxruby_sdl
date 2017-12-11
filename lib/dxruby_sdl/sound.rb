@@ -44,15 +44,15 @@ module DXRubySDL
 
       def initialize(filename)
         @music = SDL::Mixer::Music.load(filename)
-        @loop_count = -1
+        @_loop_count = -1
       end
 
       def play
-        SDL::Mixer.play_music(@music, @loop_count)
+        SDL::Mixer.play_music(@music, @_loop_count)
       end
 
       def loop_count=(n)
-        @loop_count = n
+        @_loop_count = n
       end
 
       def set_volume(volume, time = 0)
@@ -75,11 +75,11 @@ module DXRubySDL
       def initialize(filename)
         @wave = SDL::Mixer::Wave.load(filename)
         @last_played_channel = nil
-        @loop_count = 0
+        @_loop_count = 0
       end
 
       def play
-        @last_played_channel = SDL::Mixer.play_channel(-1, @wave, @loop_count)
+        @last_played_channel = SDL::Mixer.play_channel(-1, @wave, @_loop_count)
       rescue SDL::Error => e
         if /No free channels available/ =~ e.message
           SDL::Mixer.halt(@last_played_channel == 0 ? 1 : 0)
@@ -88,7 +88,7 @@ module DXRubySDL
       end
 
       def loop_count=(n)
-        @loop_count = n
+        @_loop_count = n
       end
 
       def set_volume(volume, time = 0)
