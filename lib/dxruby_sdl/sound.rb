@@ -32,8 +32,9 @@ module DXRubySDL
       end
     end
 
-    def_delegators :@sound, :play, :set_volume, :stop
+    def_delegators :@sound, :play, :loop_count=, :set_volume, :stop
 
+    alias_method :loopCount=, :loop_count=
     alias_method :setVolume, :set_volume
 
     private
@@ -43,10 +44,15 @@ module DXRubySDL
 
       def initialize(filename)
         @music = SDL::Mixer::Music.load(filename)
+        @_loop_count = -1
       end
 
       def play
-        SDL::Mixer.play_music(@music, -1)
+        SDL::Mixer.play_music(@music, @_loop_count)
+      end
+
+      def loop_count=(n)
+        @_loop_count = n
       end
 
       def set_volume(volume, time = 0)
@@ -69,15 +75,20 @@ module DXRubySDL
       def initialize(filename)
         @wave = SDL::Mixer::Wave.load(filename)
         @last_played_channel = nil
+        @_loop_count = 0
       end
 
       def play
-        @last_played_channel = SDL::Mixer.play_channel(-1, @wave, 0)
+        @last_played_channel = SDL::Mixer.play_channel(-1, @wave, @_loop_count)
       rescue SDL::Error => e
         if /No free channels available/ =~ e.message
           SDL::Mixer.halt(@last_played_channel == 0 ? 1 : 0)
           retry
         end
+      end
+
+      def loop_count=(n)
+        @_loop_count = n
       end
 
       def set_volume(volume, time = 0)
