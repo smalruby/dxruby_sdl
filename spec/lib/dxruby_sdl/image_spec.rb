@@ -101,6 +101,18 @@ describe DXRubySDL::Image, '画像を表すクラス' do
     end
   end
 
+  describe '#[]=' do
+    it "RGB" do
+      logo_image[0, 0] = [229, 98, 108]
+      expect(logo_image[0, 0]).to eq([255, 229, 98, 108])
+    end
+
+    it "ARGB" do
+      logo_image[0, 0] = [150, 229, 98, 108]
+      expect(logo_image[0, 0]).to eq([150, 229, 98, 108])
+    end
+  end
+
   describe '#compare' do
     it "RGB" do
       expect(logo_image.compare(0, 0, [255, 255, 255])).to eq(false)
