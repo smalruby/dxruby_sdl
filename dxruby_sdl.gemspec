@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['kouji.takao@gmail.com']
   spec.description   = %q{`dxruby-sdl` is a ruby library for 2D graphics and game. It has same DXRuby API. It use SDL/Ruby.}
   spec.summary       = %q{2D graphics and game library}
-  spec.homepage      = 'https://github.com/takaokouji/dxruby-sdl'
+  spec.homepage      = 'https://github.com/smalruby/dxruby-sdl'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
