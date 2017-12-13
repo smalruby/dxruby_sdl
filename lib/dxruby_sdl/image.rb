@@ -30,7 +30,7 @@ module DXRubySDL
     end
 
     def initialize(width, height, color = [0, 0, 0, 0])
-      @color = color
+      @color = to_sdl_rgba(color)
 
       if width == 0 && height == 0
         return
@@ -39,6 +39,11 @@ module DXRubySDL
       @_surface =
         SDL::Surface.new(SDL::SWSURFACE, width, height, Window.send(:screen))
       @_surface.fill_rect(0, 0, width, height, @color)
+    end
+
+    def [](x, y)
+      pixel = lock { @_surface.get_pixel(x, y) }
+      @_surface.format.get_rgba(pixel)
     end
 
     def width
@@ -50,12 +55,11 @@ module DXRubySDL
     end
 
     def set_color_key(color)
-      @_surface.set_color_key(SDL::SRCCOLORKEY | SDL::RLEACCEL, color)
+      @_surface.set_color_key(SDL::SRCCOLORKEY | SDL::RLEACCEL, to_sdl_color(color))
     end
 
     def compare(x, y, color)
-      pixel = lock { @_surface.get_pixel(x, y) }
-      color == (color.length == 4 ? @_surface.format.get_rgba(pixel) : @_surface.format.get_rgb(pixel))
+      self[x, y] == to_sdl_rgba(color)
     end
 
     def slice(x, y, width, height)
@@ -121,7 +125,7 @@ module DXRubySDL
       if string.empty?
         return
       end
-      r, g, b = *color
+      r, g, b = *to_sdl_color(color)
       h = font._ttf.height + 1
       string.lines.each.with_index do |line, i|
         line.chomp!

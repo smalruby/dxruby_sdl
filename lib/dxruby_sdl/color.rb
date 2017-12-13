@@ -6,18 +6,22 @@ module DXRubySDL
 
     def to_sdl_color(color)
       if color.length == 4
-        return color[0..2]
+        return color[1..3]
       else
-        return color
+        color
       end
     end
 
     def to_sdl_alpha(color)
       if color.length == 4
-        return color[3]
+        color[0]
       else
-        return nil
+        0xFF
       end
+    end
+
+    def to_sdl_rgba(color)
+      [*to_sdl_color(color), to_sdl_alpha(color)]
     end
   end
 end
