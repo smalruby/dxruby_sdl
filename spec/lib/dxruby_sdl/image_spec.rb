@@ -3,6 +3,7 @@ require 'spec_helper'
 
 describe DXRubySDL::Image, '画像を表すクラス' do
   let(:image) { DXRubySDL::Image.new(640, 480) }
+  let(:logo_image) { DXRubySDL::Image.load(fixture_path("logo.png")) }
 
   describe '.new' do
     context '幅と高さを指定した場合' do
@@ -89,6 +90,28 @@ describe DXRubySDL::Image, '画像を表すクラス' do
           }
         end
       end
+    end
+  end
+
+  describe '#[]' do
+    it "pixel is ARGB format" do
+      expect(logo_image[0, 0]).to eq([254, 255, 255, 255])
+      expect(logo_image[75, 144]).to eq([0, 255, 255, 255])
+      expect(logo_image[206, 191]).to eq([254, 229, 98, 108])
+    end
+  end
+
+  describe '#compare' do
+    it "RGB" do
+      expect(logo_image.compare(0, 0, [255, 255, 255])).to eq(false)
+      expect(logo_image.compare(75, 144, [255, 255, 255])).to eq(false)
+      expect(logo_image.compare(206, 191, [229, 98, 108])).to eq(false)
+    end
+
+    it "ARGB" do
+      expect(logo_image.compare(0, 0, [254, 255, 255, 255])).to eq(true)
+      expect(logo_image.compare(75, 144, [0, 255, 255, 255])).to eq(true)
+      expect(logo_image.compare(206, 191, [254, 229, 98, 108])).to eq(true)
     end
   end
 

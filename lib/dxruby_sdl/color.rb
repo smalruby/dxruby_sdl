@@ -23,5 +23,21 @@ module DXRubySDL
     def to_sdl_rgba(color)
       [*to_sdl_color(color), to_sdl_alpha(color)]
     end
+
+    def to_dxruby_rgba(color)
+      if color.length == 4
+        [color[3], *color[0..2]]
+      else
+        [0xFF, *color]
+      end
+    end
+
+    def normalize_dxruby(color)
+      if color.length == 4
+        color
+      else
+        [0xFF] + color
+      end
+    end
   end
 end

@@ -52,4 +52,36 @@ describe DXRubySDL::Color, 'カラーを変換するモジュール' do
       it { is_expected.to eq([0, 125 ,255, 60]) }
     end
   end
+
+  describe '#to_dxruby_rgba', 'SDL\'s RGBA to DXRuby\'s ARGB' do
+    subject { described_class.to_dxruby_rgba(color) }
+
+    context "RGB" do
+      let(:color) { [0, 125, 255] }
+
+      it { is_expected.to eq([0xFF] + color) }
+    end
+
+    context "RGBA" do
+      let(:color) { [60, 0, 125, 255] }
+
+      it { is_expected.to eq([255, 60, 0, 125]) }
+    end
+  end
+
+  describe '#normalize_dxruby' do
+    subject { described_class.normalize_dxruby(color) }
+
+    context "RGB" do
+      let(:color) { [0, 125, 255] }
+
+      it { is_expected.to eq([0xFF] + color) }
+    end
+
+    context "ARGB" do
+      let(:color) { [255, 60, 0, 125] }
+
+      it { is_expected.to eq(color) }
+    end
+  end
 end

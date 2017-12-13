@@ -43,7 +43,7 @@ module DXRubySDL
 
     def [](x, y)
       pixel = lock { @_surface.get_pixel(x, y) }
-      @_surface.format.get_rgba(pixel)
+      Color.to_dxruby_rgba(@_surface.format.get_rgba(pixel))
     end
 
     def width
@@ -59,7 +59,7 @@ module DXRubySDL
     end
 
     def compare(x, y, color)
-      self[x, y] == to_sdl_rgba(color)
+      self[x, y] == Color.normalize_dxruby(color)
     end
 
     def slice(x, y, width, height)
