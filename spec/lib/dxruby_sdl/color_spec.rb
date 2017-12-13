@@ -25,9 +25,7 @@ describe DXRubySDL::Color, 'カラーを変換するモジュール' do
     context '引数が3つの要素の配列の場合' do
       let(:color) { [0, 125, 255] }
 
-      it '常にnilを返す' do
-        is_expected.to be(nil)
-      end
+      it { is_expected.to eq(0xFF) }
     end
 
     [0, 125, 255].each do |expected|
@@ -45,7 +43,7 @@ describe DXRubySDL::Color, 'カラーを変換するモジュール' do
     context "引数が3つの要素の配列([0, 125, 255])の場合" do
       let(:color) { [0, 125, 255] }
 
-      it { is_expected.to eq([255] + color) }
+      it { is_expected.to eq(color + [255]) }
     end
 
     context "引数が4つの要素の配列で後ろから3つが([0, 125, 255])の場合" do
