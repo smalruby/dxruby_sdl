@@ -24,7 +24,7 @@ module DXRubySDL
       [*to_sdl_color(color), to_sdl_alpha(color)]
     end
 
-    def to_dxruby_rgba(color)
+    def to_dxruby_argb(color)
       if color.length == 4
         [color[3], *color[0..2]]
       else

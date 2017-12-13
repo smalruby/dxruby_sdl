@@ -43,7 +43,7 @@ module DXRubySDL
 
     def [](x, y)
       pixel = lock { @_surface.get_pixel(x, y) }
-      Color.to_dxruby_rgba(@_surface.format.get_rgba(pixel))
+      Color.to_dxruby_argb(@_surface.format.get_rgba(pixel))
     end
 
     def width

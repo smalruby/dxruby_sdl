@@ -53,8 +53,8 @@ describe DXRubySDL::Color, 'カラーを変換するモジュール' do
     end
   end
 
-  describe '#to_dxruby_rgba', 'SDL\'s RGBA to DXRuby\'s ARGB' do
-    subject { described_class.to_dxruby_rgba(color) }
+  describe '#to_dxruby_argb', 'SDL\'s RGBA to DXRuby\'s ARGB' do
+    subject { described_class.to_dxruby_argb(color) }
 
     context "RGB" do
       let(:color) { [0, 125, 255] }
