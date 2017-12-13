@@ -43,6 +43,38 @@ module DXRubySDL
     if /darwin/ =~ RUBY_PLATFORM
       font_info =
         [
+        %w[
+          梅Pゴシック
+          /Library/Fonts/ume-pgo4.ttf
+          ume-pgo4
+          ＭＳ\ Ｐゴシック
+          MS\ Pゴシック
+          MS\ PGothic
+        ],
+        %w[
+          梅ゴシック
+          /Library/Fonts/ume-tgo4.ttf
+          ume-tgo4
+          ＭＳ\ ゴシック
+          MS\ ゴシック
+          MS\ Gothic
+        ],
+        %w[
+          梅P明朝
+          /Library/Fonts/ume-pmo3.ttf
+          ume-pmo3
+          ＭＳ\ P明朝
+          MS\ P明朝
+          MS\ PMincho
+        ],
+        %w[
+          梅明朝
+          /Library/Fonts/ume-tmo3.ttf
+          ume-tmo3
+          ＭＳ\ 明朝
+          MS\ 明朝
+          MS\ Mincho
+        ],
          %w[
            ＭＳ\ Ｐゴシック
            /Library/Fonts/Microsoft/MS\ PGothic.ttf
