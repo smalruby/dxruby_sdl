@@ -1,5 +1,7 @@
 # dxruby_sdl
 
+1234
+
 [![Gem Version](https://badge.fury.io/rb/dxruby_sdl.png)](http://badge.fury.io/rb/dxruby_sdl)
 [![Build Status](https://travis-ci.org/smalruby/dxruby_sdl.svg?branch=master)](https://travis-ci.org/smalruby/dxruby_sdl)
 [![Coverage Status](https://coveralls.io/repos/smalruby/dxruby_sdl/badge.png?branch=master)](https://coveralls.io/r/smalruby/dxruby_sdl?branch=master)
