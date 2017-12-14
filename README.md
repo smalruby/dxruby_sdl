@@ -54,9 +54,13 @@ with Homebrew
 $ brew install https://gist.githubusercontent.com/ymmtmdk/5b15f2b06aef5549eb5a/raw/ebf4c9758b1f772f0f6073e7b2bdbb5e9665ee74/libsge.rb
 ```
 
-(3) MS PGohic (DXRuby's default font)
+(3) Ume-font
 
-Search and download from internet. A keyword example is "ms pgothic download".
+DXRuby's default font is MS P Gothic, so if you want to same look on windows, you should install MS P Gothic. However MS-font is not free.
+
+Ume-font is same width MS-font (MS P Gothic, MS P Mincho, etc.) and it's free.
+
+Download from https://ja.osdn.net/projects/ume-font/wiki/FrontPage and install.
 
 #### Linux
 
