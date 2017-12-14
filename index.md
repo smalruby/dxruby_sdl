@@ -7,7 +7,6 @@ layout: default
 [![Gem Version](https://badge.fury.io/rb/dxruby_sdl.png)](http://badge.fury.io/rb/dxruby_sdl)
 [![Build Status](https://travis-ci.org/smalruby/dxruby_sdl.svg?branch=master)](https://travis-ci.org/smalruby/dxruby_sdl)
 [![Coverage Status](https://coveralls.io/repos/smalruby/dxruby_sdl/badge.png?branch=master)](https://coveralls.io/r/smalruby/dxruby_sdl?branch=master)
-[![Dependency Status](https://gemnasium.com/smalruby/dxruby_sdl.png)](https://gemnasium.com/smalruby/dxruby_sdl)
 [![Code Climate](https://codeclimate.com/github/smalruby/dxruby_sdl.png)](https://codeclimate.com/github/smalruby/dxruby_sdl)
 
 `dxruby_sdl` is a ruby library for 2D graphics and game. It has same
