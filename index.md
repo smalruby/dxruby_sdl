@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # dxruby_sdl
 
 [![Gem Version](https://badge.fury.io/rb/dxruby_sdl.png)](http://badge.fury.io/rb/dxruby_sdl)
