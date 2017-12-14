@@ -1,3 +1,4 @@
+encoding: UTF-8
 title: dxruby_sdl
 email: kouji.takao+smalruby@gmail.com
 description: >-
@@ -5,9 +6,15 @@ description: >-
 baseurl: "/dxruby_sdl"
 url: http://smalruby.jp
 github_username: smalruby
-show_downloads: true
+show_downloads: false
 
 markdown: kramdown
+  input: GFM
+  hard_wrap: false
+future: true
+jailed: false
+gfm_quirks: paragraph_end
+
 theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
