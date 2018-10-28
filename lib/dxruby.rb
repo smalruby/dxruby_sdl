@@ -2,4 +2,5 @@
 
 require_relative 'dxruby_sdl'
 
-include DXRubySDL
+DXRuby = DXRubySDL
+include DXRuby
